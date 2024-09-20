@@ -37,13 +37,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> _fetchWeatherData() async {
     try {
-      final weatherData =
-          await getWeatherData('Berlin'); // Oder eine andere Stadt deiner Wahl
+      final weatherData = await getWeatherData('Berlin');
       setState(() {
         _weatherData = weatherData;
       });
+      print('Wetterdaten: $_weatherData');
     } catch (error) {
-      // Fehlerbehandlung, z.B. eine Fehlermeldung anzeigen
       print('Fehler: $error');
     }
   }
