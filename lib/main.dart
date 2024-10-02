@@ -53,9 +53,11 @@ class _MyHomePageState extends State<MyHomePage> {
         _weatherData = weatherData;
         _cityController.text = weatherData['name'];
       });
-      print('Wetterdaten: $_weatherData');
     } catch (error) {
-      print('Fehler: $error');
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Fehler: $error')),
+      );
     }
   }
 
@@ -65,8 +67,10 @@ class _MyHomePageState extends State<MyHomePage> {
       final location = '${position.latitude}, ${position.longitude}';
       _fetchWeatherData(location);
     } catch (error) {
-      // Fehlerbehandlung, z.B. eine Fehlermeldung anzeigen
-      print('Fehler: $error');
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Fehler: $error')),
+      );
     }
   }
 
