@@ -113,6 +113,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   // Zeige die Wetterdaten an, wenn sie verfügbar sind
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Image.network(
+                        getWeathericonUrl(_weatherData?["weather"][0]["icon"])),
                     Text(
                       'Temperatur: ${_weatherData!['main']['temp']}°C',
                       style: Theme.of(context).textTheme.headlineMedium,

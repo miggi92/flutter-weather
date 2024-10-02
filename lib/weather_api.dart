@@ -29,3 +29,7 @@ Future<Map<String, dynamic>> getWeatherData(
     throw Exception('Fehler beim Abrufen der Wetterdaten');
   }
 }
+
+String getWeathericonUrl(String iconCode) {
+  return 'https://openweathermap.org/img/wn/$iconCode@2x.png';
+}
