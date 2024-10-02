@@ -1,11 +1,31 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    ":dependencyDashboard",
-    ":semanticPrefixFixDepsChoreOthers",
-    ":ignoreModulesAndTests",
-    "group:monorepos",
-    "group:recommended",
-    "replacements:all",
-    "workarounds:all"
+    "config:base"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["flutter"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true 
+    },
+    {
+      "matchPackageNames": ["geolocator", "http", "flutter_dotenv", "mockito"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    },
+    {
+      "description": "Pin dependencies not matching the versioning policy",
+      "matchCurrentVersion": "!/^\\d+\\.\\d+\\.\\d+$/",
+      "matchUpdateTypes": ["pin"],
+      "automerge": true
+    }
+  ],
+  "pubspecGroups": [
+    {
+      "groupName": "Flutter SDK constraints",
+      "matchPackageNames": ["flutter"],
+      "matchDepTypes": ["sdk"]
+    }
   ]
 }
