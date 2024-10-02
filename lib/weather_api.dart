@@ -2,12 +2,24 @@ import 'dart:convert'; // Für die JSON-Verarbeitung
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
-Future<Map<String, dynamic>> getWeatherData(String cityName) async {
+Future<Map<String, dynamic>> getWeatherData(
+    String location, String language) async {
   const String apiUrl = 'https://api.openweathermap.org/data/2.5/weather';
   await dotenv.load(fileName: ".env");
   String apiKey = dotenv.env['WEATHER_API_KEY']!;
+  Uri url;
 
-  final Uri url = Uri.parse('$apiUrl?q=$cityName&appid=$apiKey&units=metric');
+  if (location.contains(',')) {
+    final coordinates = location.split(',');
+    final latitude = coordinates[0].trim();
+    final longitude = coordinates[1].trim();
+
+    url = Uri.parse(
+        '$apiUrl?lat=$latitude&lon=$longitude&appid=$apiKey&units=metric&lang=$language');
+  } else {
+    url = Uri.parse(
+        '$apiUrl?q=$location&appid=$apiKey&units=metric&lang=$language');
+  }
 
   final http.Response response = await http.get(url);
 

@@ -29,11 +29,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   Map<String, dynamic>? _weatherData;
+  String _userLanguage = 'EN';
   final _cityController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
+    _getUserLanguage();
     _getLocation();
   }
 
@@ -43,10 +45,10 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
-  Future<void> _fetchWeatherData([String? cityName]) async {
+  Future<void> _fetchWeatherData([String? location]) async {
     try {
-      cityName ??= _cityController.text;
-      final weatherData = await getWeatherData(cityName);
+      location ??= _cityController.text;
+      final weatherData = await getWeatherData(location, _userLanguage);
       setState(() {
         _weatherData = weatherData;
       });
@@ -59,12 +61,19 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> _getLocation() async {
     try {
       final position = await getLocation();
-      final cityName = '${position.latitude}, ${position.longitude}';
-      _fetchWeatherData(cityName);
+      final location = '${position.latitude}, ${position.longitude}';
+      _fetchWeatherData(location);
     } catch (error) {
       // Fehlerbehandlung, z.B. eine Fehlermeldung anzeigen
       print('Fehler: $error');
     }
+  }
+
+  void _getUserLanguage() {
+    Locale myLocale = WidgetsBinding.instance.platformDispatcher.locale;
+    setState(() {
+      _userLanguage = myLocale.languageCode;
+    });
   }
 
   @override
