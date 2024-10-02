@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/weather_api.dart';
+import 'package:mgm12_weather/weather_api.dart';
 
 import 'geo_location_service.dart';
 

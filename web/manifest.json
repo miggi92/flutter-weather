@@ -1,11 +1,11 @@
 {
-    "name": "myapp",
-    "short_name": "myapp",
+    "name": "mgm12_weather",
+    "short_name": "Weather",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "A flutter weather app.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
