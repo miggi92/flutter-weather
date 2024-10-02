@@ -32,6 +32,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-flutter-
 
+      - name: Cache Flutter SDK
+        uses: actions/cache@v3
+        with:
+          path: /opt/hostedtoolcache/flutter
+          key: ${{ runner.os }}-flutter-sdk-${{ hashFiles('**/pubspec.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-flutter-sdk-
+
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
