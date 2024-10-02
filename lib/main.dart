@@ -51,6 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
       final weatherData = await getWeatherData(location, _userLanguage);
       setState(() {
         _weatherData = weatherData;
+        _cityController.text = weatherData['name'];
       });
       print('Wetterdaten: $_weatherData');
     } catch (error) {
