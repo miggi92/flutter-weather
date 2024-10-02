@@ -6,8 +6,9 @@
 name: Build and release
 
 on:
-  tags:
-    - 'v*'
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   build:
