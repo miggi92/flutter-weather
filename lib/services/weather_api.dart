@@ -1,9 +1,9 @@
 import 'dart:convert'; // Für die JSON-Verarbeitung
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
+import 'package:mgm12_weather/models/weather_data.dart';
 
-Future<Map<String, dynamic>> getWeatherData(
-    String location, String language) async {
+Future<WeatherData> getWeatherData(String location, String language) async {
   const String apiUrl = 'https://api.openweathermap.org/data/2.5/weather';
   await dotenv.load(fileName: ".env");
   String apiKey = dotenv.env['WEATHER_API_KEY']!;
@@ -24,7 +24,7 @@ Future<Map<String, dynamic>> getWeatherData(
   final http.Response response = await http.get(url);
 
   if (response.statusCode == 200) {
-    return jsonDecode(response.body);
+    return WeatherData.fromJson(jsonDecode(response.body));
   } else {
     throw Exception('Fehler beim Abrufen der Wetterdaten');
   }

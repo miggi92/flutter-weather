@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mgm12_weather/models/weather_data.dart';
 import 'package:mgm12_weather/services/weather_api.dart';
 
 import 'services/geo_locator.dart';
@@ -31,7 +32,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Map<String, dynamic>? _weatherData;
+  WeatherData? _weatherData;
   String _userLanguage = 'EN';
   final _cityController = TextEditingController();
 
@@ -54,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
       final weatherData = await getWeatherData(location, _userLanguage);
       setState(() {
         _weatherData = weatherData;
-        _cityController.text = weatherData['name'];
+        _cityController.text = weatherData.name;
       });
     } catch (error) {
       if (!mounted) return;
@@ -114,13 +115,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.network(
-                        getWeathericonUrl(_weatherData?["weather"][0]["icon"])),
+                        getWeathericonUrl(_weatherData?.weather[0].icon ?? '')),
                     Text(
-                      'Temperatur: ${_weatherData!['main']['temp']}°C',
+                      'Temperatur: ${_weatherData!.main.temp}°C',
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
                     Text(
-                      'Beschreibung: ${_weatherData!['weather'][0]['description']}',
+                      'Beschreibung: ${_weatherData!.weather[0].description}',
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                     // Weitere Wetterdaten können hier hinzugefügt werden
