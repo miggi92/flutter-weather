@@ -48,7 +48,7 @@ This app uses the OpenWeatherMap API. You will need an API key to use the app. Y
 
 
 <!-- Links -->
-[CI]: https://img.shields.io/github/actions/workflow/status/miggi92/flutter-weather/ci.yml?style=for-the-badge
+[CI]: https://img.shields.io/github/actions/workflow/status/miggi92/flutter-weather/ci_cd.yml?style=for-the-badge
 [Home Screen]: ./assets/home_screen.png
 [Home Screen Mobile]: ./assets/home_screen_mobile.png
 
