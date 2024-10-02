@@ -136,7 +136,7 @@ class Wind {
     return Wind(
       speed: json['speed'].toDouble(),
       deg: json['deg'],
-      gust: json['gust'].toDouble(),
+      gust: json['gust']?.toDouble() ?? 0,
     );
   }
 }
