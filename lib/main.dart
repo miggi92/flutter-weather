@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/weather_api.dart';
 
+import 'geo_location_service.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Weather',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: MyHomePage(title: 'Weather App'),
+      home: const MyHomePage(title: 'Weather App'),
     );
   }
 }
@@ -32,6 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+    _getLocation();
   }
 
   @override
@@ -40,15 +43,26 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
-  Future<void> _fetchWeatherData() async {
+  Future<void> _fetchWeatherData([String? cityName]) async {
     try {
-      final cityName = _cityController.text;
+      cityName ??= _cityController.text;
       final weatherData = await getWeatherData(cityName);
       setState(() {
         _weatherData = weatherData;
       });
       print('Wetterdaten: $_weatherData');
     } catch (error) {
+      print('Fehler: $error');
+    }
+  }
+
+  Future<void> _getLocation() async {
+    try {
+      final position = await getLocation();
+      final cityName = '${position.latitude}, ${position.longitude}';
+      _fetchWeatherData(cityName);
+    } catch (error) {
+      // Fehlerbehandlung, z.B. eine Fehlermeldung anzeigen
       print('Fehler: $error');
     }
   }
