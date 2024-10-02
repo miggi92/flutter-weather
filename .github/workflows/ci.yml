@@ -23,7 +23,7 @@ jobs:
           touch .env
           echo WEATHER_API_KEY=DUMMY >> .env
       - name: Cache Flutter dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             /home/runner/.pub-cache
@@ -33,7 +33,7 @@ jobs:
             ${{ runner.os }}-flutter-
 
       - name: Cache Flutter SDK
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: /opt/hostedtoolcache/flutter
           key: ${{ runner.os }}-flutter-sdk-${{ hashFiles('**/pubspec.yaml') }}
