@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mgm12_weather/screens/home_screen.dart';
+import 'package:mgm12_weather/themes/dark_theme.dart';
+import 'package:mgm12_weather/themes/light_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,12 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Weather',
-      theme:
-          ThemeData(primarySwatch: Colors.blue, brightness: Brightness.light),
-      darkTheme: ThemeData(
-        primarySwatch: Colors.blueGrey,
-        brightness: Brightness.dark,
-      ),
+      theme: lightTheme,
+      darkTheme: darkTheme,
       home: const MyHomePage(title: 'Weather App'),
     );
   }
