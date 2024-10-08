@@ -4,14 +4,14 @@
 
 ![CI] ![CD]
 
+![Feature Video]
+
 ## Features
 
 * Displays the current weather for a given location.
 * Automatically retrieves the user's location or allows manual entry of a city.
 * Shows a weather forecast for the next few days.
 * Provides a user-friendly and visually appealing interface.
-
-![Feature Video]
 
 ## Screenshots
 
@@ -26,6 +26,10 @@
 ![Home Screen Mobile Detail]
 
 ## Usage
+
+To run this app, you will need an API key from OpenWeatherMap. You can get a free key by signing up on their website: [https://openweathermap.org/](https://openweathermap.org/)
+
+Once you have your API key, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/your-username/weather-app.git`
 2. Navigate to the project directory: `cd weather-app`
