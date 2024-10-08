@@ -104,6 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     labelText: 'Stadt',
                     border: OutlineInputBorder(),
                   ),
+                  onSubmitted: (text) => _fetchWeatherData(),
                 ),
               ),
               ElevatedButton(
