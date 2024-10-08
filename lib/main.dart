@@ -110,23 +110,26 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: _fetchWeatherData,
                   child: const Text('Wetter anzeigen')),
               if (_weatherData != null)
-                Column(
-                  // Zeige die Wetterdaten an, wenn sie verfügbar sind
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.network(
-                        getWeathericonUrl(_weatherData?.weather[0].icon ?? '')),
-                    Text(
-                      'Temperatur: ${_weatherData!.main.temp}°C',
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    ),
-                    Text(
-                      'Beschreibung: ${_weatherData!.weather[0].description}',
-                      style: Theme.of(context).textTheme.headlineSmall,
-                    ),
-                    // Weitere Wetterdaten können hier hinzugefügt werden
-                  ],
-                ),
+                Card(
+                    child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          // Zeige die Wetterdaten an, wenn sie verfügbar sind
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.network(getWeathericonUrl(
+                                _weatherData?.weather[0].icon ?? '')),
+                            Text(
+                              'Temperatur: ${_weatherData!.main.temp}°C',
+                              style: Theme.of(context).textTheme.headlineMedium,
+                            ),
+                            Text(
+                              'Beschreibung: ${_weatherData!.weather[0].description}',
+                              style: Theme.of(context).textTheme.headlineSmall,
+                            ),
+                            // Weitere Wetterdaten können hier hinzugefügt werden
+                          ],
+                        ))),
               if (_cityController.text.isNotEmpty && _weatherData == null)
                 const CircularProgressIndicator(),
             ]),
