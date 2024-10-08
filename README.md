@@ -11,10 +11,19 @@
 * Shows a weather forecast for the next few days.
 * Provides a user-friendly and visually appealing interface.
 
+![Feature Video]
+
 ## Screenshots
 
+### Desktop
+
 ![Home Screen]
+![Home Screen Detail]
+
+### Mobile
+
 ![Home Screen Mobile]
+![Home Screen Mobile Detail]
 
 ## Usage
 
@@ -52,4 +61,7 @@ This app uses the OpenWeatherMap API. You will need an API key to use the app. Y
 [CD]: https://img.shields.io/github/actions/workflow/status/miggi92/flutter-weather/cd.yml?style=for-the-badge
 [Home Screen]: ./assets/home_screen.png
 [Home Screen Mobile]: ./assets/home_screen_mobile.png
+[Home Screen Detail]: ./assets/home_screen_details.png
+[Home Screen Mobile Detail]: ./assets/home_screen_mobile_details.png
+[Feature Video]: ./assets/features.gif
 
