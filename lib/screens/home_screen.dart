@@ -81,7 +81,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   onSubmitted: (text) => _fetchWeatherData()),
               ElevatedButton(
                   onPressed: _fetchWeatherData,
-                  child: const Text('Wetter anzeigen')),
+                  child: Row(mainAxisSize: MainAxisSize.min, children: const [
+                    Icon(Icons.search),
+                    SizedBox(width: 8),
+                    Text('Wetter anzeigen')
+                  ])),
               if (_weatherData != null)
                 WeatherDisplay(weatherData: _weatherData!),
               if (_cityController.text.isNotEmpty && _weatherData == null)
